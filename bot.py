@@ -112,9 +112,11 @@ async def run_bot():
         return PlainTextResponse("OK")
 
     starlette_app = Starlette(routes=[
-        Route("/telegram", telegram_webhook, methods=["POST"]),
-        Route("/healthcheck", health_check, methods=["GET"]),
-    ])
+    # Теперь Render найдет ваш бот по основному адресу
+    Route("/", health_check, methods=["GET"]), 
+    # Путь для вебхука Telegram
+    Route("/webhook", telegram_webhook, methods=["POST"]),
+])
 
     # Запускаем uvicorn сервер
     import uvicorn
