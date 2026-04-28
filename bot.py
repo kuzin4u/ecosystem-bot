@@ -115,17 +115,28 @@ async def run_bot():
     # Теперь Render найдет ваш бот по основному адресу
     Route("/", health_check, methods=["GET"]), 
     # Путь для вебхука Telegram
-    Route("/webhook", telegram_webhook, methods=["POST"]),
+    Route("/telegram", telegram_webhook, methods=["POST"]),
 ])
 
-    # Запускаем uvicorn сервер
-    import uvicorn
-    config = uvicorn.Config(starlette_app, host="0.0.0.0", port=PORT, log_level="info")
+   # Запускаем сервер, который будет держать порт открытым для Render
+    config = uvicorn.Config(starlette_app, host="0.0.0.0", port=PORT)
     server = uvicorn.Server(config)
-    async with app:
-        await app.start()
+    
+    try:
         await server.serve()
+    finally:
+        # Важно корректно остановить бота
         await app.stop()
-
+        await app.shutdown()
+main():
+    # Инициализируем бота (ваша переменная app)
+    await app.initialize()
+    await app.start()
+    
+main():
+    # Инициализируем бота (ваша переменная app)
+    await app.initialize()
+    await app.start()
+    
 if __name__ == "__main__":
     asyncio.run(run_bot())
