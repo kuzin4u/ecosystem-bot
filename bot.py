@@ -100,6 +100,7 @@ async def run_bot():
 
     # Создаём Starlette-приложение для обработки входящих запросов
     async def telegram_webhook(request: Request):
+    logger.info("!!! WEBHOOK ВЫЗВАН !!!")
         try:
             data = await request.json()
             update = Update.de_json(data, app.bot)
