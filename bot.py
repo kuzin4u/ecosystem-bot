@@ -128,10 +128,6 @@ async def run_bot():
         # Важно корректно остановить бота
         await app.stop()
         await app.shutdown()
-main():
-    # Инициализируем бота (ваша переменная app)
-    await app.initialize()
-    await app.start()
     
 main():
     # Инициализируем бота (ваша переменная app)
