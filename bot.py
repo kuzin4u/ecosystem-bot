@@ -129,10 +129,6 @@ async def run_bot():
         await app.stop()
         await app.shutdown()
     
-main():
-    # Инициализируем бота (ваша переменная app)
-    await app.initialize()
-    await app.start()
     
 if __name__ == "__main__":
     asyncio.run(run_bot())
