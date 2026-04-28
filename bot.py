@@ -119,7 +119,7 @@ async def run_bot():
 ])
 
    # Запускаем сервер, который будет держать порт открытым для Render
-    config = uvicorn.Config(starlette_app, host="0.0.0.0", port=PORT)
+    config = uvicorn.Config(starlette_app, host="0.0.0.0", port=PORT,log_level="info")
     server = uvicorn.Server(config)
     
     try:
