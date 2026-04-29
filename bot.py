@@ -1,6 +1,7 @@
 import os
 import random
 import logging
+import asyncio
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
 
@@ -85,6 +86,13 @@ def main():
     logger.info("Бот запущен в режиме polling")
     app.run_polling()
 
+def main():
+    app = Application.builder().token(TOKEN).build()
+    # ... добавление обработчиков ...
+    app.run_polling()
+
 if __name__ == "__main__":
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
     main()
 
