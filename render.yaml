@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: ecosystem-human-bot-cf32
+    name: ecosystem-human-bot
     runtime: python
     repo: https://github.com/kuzin4u/ecosystem-bot
     plan: free
